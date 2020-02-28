@@ -15,4 +15,4 @@
       expect:
         command: /onapp/onapp-hv-install/onapp-hv-kvm-install.sh
         responses:
-            Do you wish to proceed yes/no [NO] ?: "yes"
+          'Do you wish to proceed yes/no [NO] ?' : 'yes'
