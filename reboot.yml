@@ -1,7 +1,7 @@
 ---
 - hosts: all
   gather_facts: no
-  tasks:
+  
 - name: (reboot) Reboot triggered
   command: /sbin/shutdown -r +1 "Ansible-triggered Reboot"
   async: 0
