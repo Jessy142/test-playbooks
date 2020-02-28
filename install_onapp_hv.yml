@@ -6,6 +6,7 @@
     
     - name: install onapp repo
       command: rpm -Uvh http://rpm.repo.onapp.com/repo/onapp-repo-6.2.noarch.rpm
+      ignore_errors: yes
         
     - name: install onapp installer
       yum: name=onapp-hv-install update_cache=yes state=latest
