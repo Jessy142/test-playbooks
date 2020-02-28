@@ -1,7 +1,7 @@
 - hosts: all
   tasks:
     - name: run updates
-        apt: update_cache=yes update_only
+        yum: update_cache=yes update_only
     
     - name: install onapp repo
         command: rpm -Uvh http://rpm.repo.onapp.com/repo/onapp-repo-6.2.noarch.rpm
