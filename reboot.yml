@@ -1,7 +1,7 @@
 ---
 - name: Reboot a host and wait for it to return
   hosts: all
-  remote_user: root
+  #remote_user: root
   tasks:
     # Send the reboot command
     - shell: shutdown -r now
