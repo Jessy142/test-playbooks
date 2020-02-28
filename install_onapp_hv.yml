@@ -3,6 +3,9 @@
   tasks:
     - name: run updates
       yum: name=* state=latest
+      
+    - name: install pexpect
+      yum: name=pexpect state=latest
     
     - name: install onapp repo
       command: rpm -Uvh http://rpm.repo.onapp.com/repo/onapp-repo-6.2.noarch.rpm
