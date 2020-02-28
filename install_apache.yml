@@ -1,5 +1,5 @@
 ---
 - hosts: all
   tasks:
-    - name: install apache2
+    - name: install httpd
       yum: name=apache2 update_cache=yes state=latest
