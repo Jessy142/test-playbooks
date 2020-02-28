@@ -14,4 +14,5 @@
     - name: install onapp kvm
       expect:
         command: /onapp/onapp-hv-install/onapp-hv-kvm-install.sh
-        responses: "yes"
+        responses:
+            Do you wish to proceed yes/no [NO] ?: "yes"
