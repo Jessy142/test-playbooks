@@ -1,12 +1,17 @@
 ---
-- hosts: all
-  gather_facts: no
-  
-- name: (reboot) Reboot triggered
-  command: /sbin/shutdown -r +1 "Ansible-triggered Reboot"
+- name: disable SELinux
+  selinux: state=disabled
+  register: st
+
+- name: reboot if SELinux changed
+  shell: shutdown -r now "Ansible updates triggered"
   async: 0
   poll: 0
+  ignore_errors: true
+  when: st.changed
 
-- name: (reboot) Wait for server to restart
-  wait_for_connection:
-    delay: 75
+- name: waiting for server to reboot
+  wait_for: host="{{ ansible_ssh_host | default(inventory_hostname) }}" port={{ ansible_ssh_port | default(22) }} search_regex=OpenSSH delay=30 timeout=120
+  connection: local
+  sudo: false
+  when: st.changed
