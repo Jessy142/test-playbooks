@@ -1,18 +1,16 @@
 ---
-- name: Reboot a host and wait for it to return
   hosts: all
-  #remote_user: root
-  tasks:
-    # Send the reboot command
-    - shell: shutdown -r now
+    tasks:
 
-    # This pause is mandatory, otherwise the existing control connection gets reused!
-    #- pause: seconds=30
+- name: Reboot a host and wait for it to return
+    - shell: shutdown -r now
     
 - name: Wait 300 seconds, but only start checking after 60 seconds
   wait_for_connection:
     delay: 60
     timeout: 300
+
+- name: PING
     
     # Now we will run a local 'ansible -m ping' on this host until it returns.
     # This works with the existing ansible hosts inventory and so any custom ansible_ssh_hosts definitions are being used
@@ -21,6 +19,6 @@
       until: result.rc == 0
       retries: 30
       delay: 10
-
+- name: uptime
     # And finally, execute 'uptime' when the host is back.
     - shell: uptime
