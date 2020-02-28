@@ -1,3 +1,5 @@
+---
+
 - name: Reboot host and wait for it to restart
   reboot:
     msg: "Reboot initiated by Ansible"
