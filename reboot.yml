@@ -1,6 +1,6 @@
 ---
 - name: Reboot a host and wait for it to return
-  hosts: somehost
+  hosts: all
   remote_user: root
   tasks:
     # Send the reboot command
