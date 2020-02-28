@@ -1,14 +1,14 @@
 ---
 - hosts: all
-  tasks:
-    - name: run updates
-        yum: name=* state=latest
+    tasks:
+      - name: run updates
+          yum: name=* state=latest
     
-    - name: install onapp repo
-        command: rpm -Uvh http://rpm.repo.onapp.com/repo/onapp-repo-6.2.noarch.rpm
+      - name: install onapp repo
+          command: rpm -Uvh http://rpm.repo.onapp.com/repo/onapp-repo-6.2.noarch.rpm
         
-    - name: install onapp installer
-        yum: name=onapp-hv-install update_cache=yes state=latest
+      - name: install onapp installer
+          yum: name=onapp-hv-install update_cache=yes state=latest
         
-    - name: install onapp kvm
-        command: /onapp/onapp-hv-install/onapp-hv-kvm-install.sh
+      - name: install onapp kvm
+          command: /onapp/onapp-hv-install/onapp-hv-kvm-install.sh
