@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name: stop httpd
+      service: name=httpd state=stopped
+      
+    - name: remove the Apache package
+      yum:
+        name: httpd
+        state: absent
