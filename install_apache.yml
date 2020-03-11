@@ -1,12 +1,20 @@
 ---
 - hosts: all
   tasks:
+    - name: open firewall tcp443
+      firewalld:
+        service: https
+        permanent: yes
+        state: enabled
+        
     - name: open firewall tcp80
-      iptables:
-        chain: INPUT
-        protocol: tcp
-        destination_port: 80
-        jump: ACCEPT
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        
+    - name: restart firewalld
+      service: name=firewalld state=restarted
         
     - name: install httpd
       yum: name=httpd update_cache=yes state=latest
